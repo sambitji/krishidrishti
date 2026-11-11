@@ -63,6 +63,8 @@ AI-powered crop disease diagnosis system targeted at Maharashtra farmers. A farm
 │ • Calibrated Conf   │ │ • Anomaly Detect│ │ • Urgency (10%) │ │ • 48h Follow-up  │
 │ • ICAR Knowledge    │ │ • Graceful degr.│ │ • Deterministic │ │ • Notifications  │
 └─────────────────────┘ └─────────────────┘ └─────────────────┘ └──────────────────┘
+<img width="12288" height="6206" alt="diagram (3)" src="https://github.com/user-attachments/assets/d584831c-f1b9-4b30-8543-03f3ca0e3280" />
+
 ```
 
 **Key architectural principles:**
