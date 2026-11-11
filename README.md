@@ -41,29 +41,6 @@ AI-powered crop disease diagnosis system targeted at Maharashtra farmers. A farm
 
 ## Architecture
 <img width="12288" height="6206" alt="diagram (3)" src="https://github.com/user-attachments/assets/d584831c-f1b9-4b30-8543-03f3ca0e3280" />
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       Farmer Web UI & Extension Portal                      │
-│   Crop selector · Leaf photo upload · Farm polygon/coordinates · Language   │
-│   Multilingual diagnosis · Field satellite screening · Case incident report │
-└──────────────────────────────────────┬──────────────────────────────────────┘
-                                       │ HTTP / REST API
-┌──────────────────────────────────────▼──────────────────────────────────────┐
-│                       FastAPI Application (api.py)                          │
-│   Canonical entrypoint · Validation · Upload handling · Multilingual router │
-└──────────┬───────────────────┬───────────────────┬───────────────────┬──────┘
-           │                   │                   │                   │
-┌──────────▼──────────┐ ┌──────▼──────────┐ ┌──────▼──────────┐ ┌──────▼──────────┐
-│   Leaf Diagnosis    │ │ Satellite Module│ │   Risk Fusion   │ │ Case & Workflow  │
-│  Inference Pipeline │ │  (GEE Adapter)  │ │     Engine      │ │    Management    │
-├─────────────────────┤ ├─────────────────┤ ├─────────────────┤ ├──────────────────┤
-│ • Quality Gate      │ │ • Sentinel-2    │ │ • Leaf AI (40%) │ │ • SQLite Store   │
-│ • CropRegistry      │ │   NDVI/NDMI/NDRE│ │ • Satellite(35%)│ │ • State Machine  │
-│ • MobileNetV3-Small │ │ • Sentinel-1 SAR│ │ • Outbreak (15%)│ │ • Expert Review  │
-│ • Calibrated Conf   │ │ • Anomaly Detect│ │ • Urgency (10%) │ │ • 48h Follow-up  │
-│ • ICAR Knowledge    │ │ • Graceful degr.│ │ • Deterministic │ │ • Notifications  │
-└─────────────────────┘ └─────────────────┘ └─────────────────┘ └──────────────────┘
-```
 
 **Key architectural principles:**
 1. **Separation of Concerns & Modality Roles:** Satellite screening detects field-scale anomalies (vigor decline, moisture stress), while leaf computer vision diagnoses specific pathogens on plant leaves.
